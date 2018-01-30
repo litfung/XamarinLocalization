@@ -1,0 +1,121 @@
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
+
+<util:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:util="clr-namespace:BLELocalization.util;assembly=BLELocalization"
+               Title="Device Scanner"
+               x:Class="BLELocalization.view.BleDeviceScannerPage">
+   <StackLayout Orientation="Vertical">
+
+      <StackLayout Orientation="Horizontal"
+                   Padding="{StaticResource GridPadding}">
+         <StackLayout HorizontalOptions="Start"
+                      Orientation="Horizontal">
+            <Label Text="Scanning"
+                   IsVisible="{Binding IsScanning}"
+                   VerticalOptions="Center" />
+            <AbsoluteLayout IsVisible="{Binding IsScanning}">
+               <ActivityIndicator IsRunning="{Binding IsScanning}">
+                  <ActivityIndicator.WidthRequest>
+                     <OnPlatform x:TypeArguments="x:Double"
+                                 Android="40"
+                                 iOS="40"
+                                 WinPhone="100" />
+                  </ActivityIndicator.WidthRequest>
+               </ActivityIndicator>
+               <Label AbsoluteLayout.LayoutBounds=".5,.5,-1,-1"
+                      AbsoluteLayout.LayoutFlags="PositionProportional"
+                      Text="{Binding ScanTimeRemaining}" />
+            </AbsoluteLayout>
+            <Button Text="Start Scan"
+                    IsVisible="{Binding IsScanning, Converter={StaticResource InvertBoolean}}"
+                    Command="{Binding ScanForDevicesCommand}"
+                    HorizontalOptions="Start" />
+         </StackLayout>
+         <StackLayout HorizontalOptions="EndAndExpand"
+                      Orientation="Horizontal">
+            <Label Text="Bluetooth"
+                   VerticalOptions="Center" />
+            <Switch IsToggled="{Binding IsAdapterEnabled, Mode=OneWay}"
+                    VerticalOptions="Center"
+                    Toggled="Switch_OnToggled" />
+         </StackLayout>
+      </StackLayout>
+
+      <ListView ItemsSource="{Binding FoundDevices}"
+                HasUnevenRows="True"
+                SeparatorColor="#aaaaaa"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+         <ListView.SeparatorVisibility>
+            <OnPlatform x:TypeArguments="SeparatorVisibility"
+                        Android="None"
+                        iOS="Default"
+                        WinPhone="Default" />
+         </ListView.SeparatorVisibility>
+         <ListView.ItemTemplate>
+            <DataTemplate>
+               <ViewCell>
+                  <Frame Margin="{StaticResource GridPadding}"
+                         Padding="{StaticResource GridPadding}">
+
+
+                    <Grid RowSpacing="2">
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                      </Grid.ColumnDefinitions>
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                      </Grid.RowDefinitions>
+
+                      <Label Grid.Column="0"
+                             Grid.Row="0"
+                             Text="Address"
+                             FontAttributes="Bold" />
+                      <Label Grid.Column="0"
+                             Grid.Row="1"
+                             Text="RSSI / Tx"
+                             FontAttributes="Bold" />
+                      <Label Grid.Column="0"
+                             Grid.Row="2"
+                             Text="Average"
+                             FontAttributes="Bold" />
+
+
+                      <Label Grid.Column="1"
+                             Grid.Row="0"
+                             Text="{Binding Address}" />
+                      <Label Grid.Column="1"
+                             Grid.Row="1"
+                             Text="{Binding Signal}" />
+                      <Label Grid.Column="1"
+                             Grid.Row="2"
+                             Text="{Binding RssiAvg}" />
+                     
+                      <StackLayout Grid.Row="6"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="2"
+                                   Orientation="Horizontal"
+                                   HorizontalOptions="FillAndExpand">
+                        <!-- TODO: implement the remember switch -->
+                        
+                     
+                      </StackLayout>
+                    </Grid>
+                  </Frame>
+               </ViewCell>
+            </DataTemplate>
+         </ListView.ItemTemplate>
+      </ListView>
+
+   </StackLayout>
+
+</util:BasePage>
