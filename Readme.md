@@ -1,6 +1,10 @@
 <img src="https://i.imgur.com/m2Q84Mc.png" width="128" height="128" />
 
-# XamarinLocalization   [![GitHub issues](https://img.shields.io/github/issues/badges/shields.svg)](https://github.com/DogFive/XamarinLocalization/issues) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
+# XamarinLocalization   
+  
+[![GitHub issues](https://img.shields.io/github/issues/badges/shields.svg)]()
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://tldrlegal.com/license/mit-license)
+<img src="https://img.shields.io/circleci/project/github/RedSparr0w/node-csgo-parser.svg"/>
 
 `XamarinLocalization` is Xamarin application that uses Bluetooth Low Energy (BLE) devices to localize its position. This project was developed as a major qualifying project for a university degree. Currently it has three implemented algorithms for localization and two averaging mechanisms for dealing with stray recieved signal strength (RSSI) values. 
 
