@@ -1,4 +1,4 @@
-<img src="https://i.imgur.com/m2Q84Mc.png" width="128" height="128" />
+<div style="text-align:center"><img src="https://i.imgur.com/m2Q84Mc.png" width="128" height="128" /></div>
 
 # XamarinLocalization   [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]() [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]() [![API docs](https://img.shields.io/badge/apidocs-DotNetApis-blue.svg?style=flat-square)](http://dotnetapis.com/pkg/ble.net)
 
